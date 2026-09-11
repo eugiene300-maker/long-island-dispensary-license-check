@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Methodology & Data Sources | Long Island Dispensary License Check</title>
+<meta name="description" content="How the Long Island Dispensary License Check gets its data from NY OCM, what each license status means, how often it updates, and how Dispensary of the Week is chosen.">
+<link rel="canonical" href="https://longislanddispensarycheck.com/methodology.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Long Island Dispensary License Check">
+<meta property="og:title" content="Methodology & Data Sources | Long Island Dispensary License Check"><meta property="og:description" content="How the Long Island Dispensary License Check gets its data from NY OCM, what each license status means, how often it updates, and how Dispensary of the Week is chosen.">
+<meta property="og:url" content="https://longislanddispensarycheck.com/methodology.html"><meta property="og:image" content="https://longislanddispensarycheck.com/assets/img/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0f3d24">
+<meta name="geo.region" content="US-NY"><meta name="geo.placename" content="Long Island, New York">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+<body>
+<div class="agegate" id="agegate" hidden role="dialog" aria-modal="true" aria-labelledby="age-h">
+  <div class="agebox"><img src="assets/img/favicon.svg" alt="">
+    <h2 id="age-h">Are you 21 or older?</h2>
+    <p>This site contains information about licensed cannabis dispensaries and is intended only for adults 21 years of age and older.</p>
+    <div class="row"><button class="btn btn-primary" data-age-yes>Yes, I'm 21+</button><button class="btn btn-light" data-age-no>No</button></div>
+    <small>By entering you agree to our <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>.</small>
+  </div>
+</div>
+<div class="ribbon"><div class="wrap"><span class="tag">Sponsored</span><span>Dispensary of the Week: <a href="index.html#dispensary-of-the-week">Planet Nugg — Farmingdale</a> · 4.9★ on Google</span></div></div>
+<header class="site-header solid"><div class="wrap nav">
+  <a class="brand" href="index.html"><img src="assets/img/favicon.svg" alt="" width="34" height="34"><span>Long Island<small>Dispensary License Check</small></span></a>
+  <ul class="nav-links" id="nav-links"><li><a href="index.html">License Check</a></li><li><a href="index.html#directory">Dispensaries</a></li><li><a href="methodology.html" aria-current="page">How It Works</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+  <div class="nav-cta"><a class="btn btn-ghost" href="index.html#newsletter">Vote for your favorite</a>
+  <button class="menu-btn" aria-label="Menu" aria-controls="nav-links" aria-expanded="false"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+</div></header>
+<section class="page-hero"><div class="bg"><img src="assets/img/hero-long-island-800.webp" alt=""></div><div class="wrap">
+  <div class="crumbs"><a href="index.html">Home</a> / Methodology</div><h1>Methodology &amp; data</h1><p>Where our data comes from, what each status means, and how often it's refreshed.</p></div></section>
+<main class="wrap page-body"><div class="two-col"><div class="prose">
+<h2>Data source</h2>
+<p>All license information comes from the <a href="https://data.ny.gov/Economic-Development/Current-OCM-Licenses/jskf-tt3q/about_data" target="_blank" rel="noopener">Current OCM Licenses</a> dataset published by the New York State Office of Cannabis Management (OCM) on the Open Data NY portal. We include every record in <b>Nassau and Suffolk counties</b> with one of these license types:</p>
+<ul><li>Adult-Use Conditional Retail Dispensary (CAURD)</li><li>Adult-Use Retail Dispensary</li><li>Adult-Use Microbusiness</li><li>Registered Organization and Registered Organization Dispensary (medical)</li></ul>
+<p>Cultivator, processor and distributor licenses are excluded because those businesses don't sell to the public.</p>
+<h2>Update schedule</h2>
+<p>An automated job runs every Monday morning. It downloads the latest records from OCM's public API, rebuilds our Long Island dataset, and republishes the site. If the state's API is unavailable or returns incomplete data, the job stops and the previous week's data stays live. The "Updated" date at the top of the homepage shows the last successful check. Our full dataset is available at <a href="data/licenses.json">/data/licenses.json</a>.</p>
+<h2>What each status means</h2>
+<ul>
+<li><b>Licensed · Open</b> — OCM lists the license as active and the location as operating.</li>
+<li><b>Licensed · Medical</b> — an active Registered Organization license to dispense medical cannabis.</li>
+<li><b>Licensed · Not open yet</b> — the license is active, but OCM lists the location as non-operational. It shouldn't be selling to the public yet.</li>
+<li><b>Application pending</b> — OCM shows an application in process. The business is not yet licensed.</li>
+<li><b>License inactive</b> — the license is no longer active.</li>
+<li><b>No license found</b> — we couldn't match the name to any Long Island record. This isn't proof a shop is unlicensed (names on licenses sometimes differ from storefront signs), so we recommend checking OCM directly.</li></ul>
+<h2>How search matching works</h2>
+<p>Search checks each record's trade name (DBA), legal entity name, street address, town and license number. It tolerates partial words and small typos, and ignores filler words like "LLC," "Inc." and "Dispensary." If nothing matches on Long Island, we also query OCM's statewide data live and show any matches elsewhere in New York.</p>
+<h2>"Opened to public" dates</h2>
+<p>Opening dates come from OCM's "retail date opened to public" field. Some operating licensees haven't reported a date; we show "Date not reported" in those cases.</p>
+<h2>Dispensary of the Week</h2>
+<p>Dispensary of the Week is a <b>sponsored</b> placement. To be eligible, a dispensary must (1) hold an active, operating OCM license, and (2) meet a customer-satisfaction threshold of at least a 4.5-star average Google rating across 100+ reviews at the time of selection. Ratings are shown with the date they were recorded. Newsletter subscribers can vote for future featured dispensaries. Sponsorship has no effect on license data, search results, or directory inclusion.</p>
+<h2>Corrections</h2>
+<p>We republish state records as-is. If you believe a record is wrong, please tell OCM and <a href="contact.html">let us know</a> — we'll flag it while it's reviewed.</p><p class="updated">Last updated: September 11, 2026</p></div>
+<aside class="side"><div class="side-card"><h3>Check a dispensary</h3><p style="font-size:.9rem;color:var(--ink2)">Search any Nassau or Suffolk dispensary for its NY license.</p><a class="btn btn-primary" href="index.html">Open the license check</a></div>
+<div class="side-card"><h3>Dispensary of the Week</h3><p style="font-size:.9rem;color:var(--ink2);margin:0 0 .6rem"><span class="pill pill-spon">Sponsored</span></p><p style="font-size:.92rem;margin:0"><a href="https://maps.google.com/?cid=3320294077432221089" target="_blank" rel="sponsored noopener"><b>Planet Nugg Weed Dispensary & Delivery</b></a><br>2043 Wellwood Ave, Farmingdale, NY 11735<br>4.9★ · 3,349 Google reviews</p></div></aside>
+</div></main>
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div class="foot-brand"><a class="brand" href="index.html"><img src="assets/img/favicon.svg" alt="" width="34" height="34"><span>Long Island<small>Dispensary License Check</small></span></a>
+      <p>A free consumer tool for checking whether a Long Island cannabis dispensary holds a real New York State license. Data from the NY Office of Cannabis Management, refreshed weekly.</p></div>
+    <div><h4>Tool</h4><ul><li><a href="index.html">License lookup</a></li><li><a href="index.html#directory">Licensed dispensaries</a></li><li><a href="index.html#faq">FAQ</a></li><li><a href="methodology.html">Methodology &amp; data</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="advertising-disclosure.html">Advertising disclosure</a></li><li><a href="privacy.html">Privacy policy</a></li><li><a href="terms.html">Terms of use</a></li></ul></div>
+    <div><h4>Dispensary of the Week</h4><div class="foot-sponsor"><span class="pill pill-spon">Sponsored</span>
+      <address><a href="https://maps.google.com/?cid=3320294077432221089" target="_blank" rel="sponsored noopener"><b>Planet Nugg Weed Dispensary & Delivery</b></a><br>2043 Wellwood Ave, Farmingdale, NY 11735<br><a href="tel:+16314603441">(631) 460-3441</a><br>NY license OCM-CAURD-24-000069</address></div></div>
+  </div>
+  <div class="wrap warnings"><strong>For use only by adults 21 years of age and older.</strong> Keep out of reach of children and pets. In case of accidental ingestion or overconsumption, contact the National Poison Control Center hotline 1-800-222-1222 or call 9-1-1. Please consume responsibly. Cannabis can impair concentration, coordination and judgment. Do not operate a vehicle or machinery under the influence of cannabis.<br>This website is an independent informational resource and is not affiliated with, or endorsed by, the New York State Office of Cannabis Management. License information is provided as-is from public records; always verify with <a href="https://cannabis.ny.gov/dispensary-location-verification" target="_blank" rel="noopener">OCM</a>.</div>
+  <div class="wrap foot-bottom"><span>© <span data-year>2026</span> Long Island Dispensary License Check. All rights reserved.</span><span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="advertising-disclosure.html">Ads</a> · <a href="sitemap.xml">Sitemap</a></span></div>
+</footer>
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "long-island-dispensary-license-check",
+  "private": true,
+  "type": "module",
+  "scripts": { "update": "node scripts/update-licenses.mjs" }
+}
